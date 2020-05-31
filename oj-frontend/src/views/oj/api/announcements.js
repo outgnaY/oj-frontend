@@ -1,13 +1,13 @@
 import request from '../../../utils/request'
 
 export default {
-  getAnnouncementList(offset, limit) {
+  getAnnouncementList(page, pageSize) {
     let params = {
-      offset: offset,
-      limit: limit
+      page: page,
+      pageSize: pageSize
     }
     return request({
-      url: '/getAnnouncementList',
+      url: '/api/announcement/get_page',
       method: 'get',
       params: params
     })

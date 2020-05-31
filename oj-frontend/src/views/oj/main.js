@@ -8,6 +8,11 @@ import Panel from './components/Panel'
 import store from '../../store'
 import 'iview/dist/styles/iview.css'
 import '../../styles/index.less'
+import filters from "../../utils/filters";
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false
 Vue.use(iView)

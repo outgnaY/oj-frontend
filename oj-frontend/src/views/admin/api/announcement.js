@@ -8,7 +8,7 @@ export default {
       pageSize: pageSize
     }
     return request({
-      url: '/api/announcement/get_list',
+      url: '/api/admin/announcement/get_page',
       method: 'get',
       params: params
     })
@@ -18,21 +18,21 @@ export default {
       id: id
     }
     return request({
-      url: '/api/announcement/del_by_id',
+      url: '/api/admin/announcement/del_by_id',
       method: 'get',
       params: params
     })
   },
   createAnnouncement(data) {
     return request({
-      url: '/api/announcement/create',
+      url: '/api/admin/announcement/create',
       method: 'get',
       params: data
     })
   },
   updateAnnouncement(data) {
     return request({
-      url: '/api/announcement/update',
+      url: '/api/admin/announcement/update',
       method: 'get',
       params: data
     })

@@ -33,7 +33,7 @@
           </el-table-column>
           <el-table-column
             prop="createBy"
-            label="作者">
+            label="创建者">
           </el-table-column>
 
           <el-table-column
@@ -87,7 +87,6 @@
   import Simditor from "./Simditor"
   import api from "../api"
   import time from "../../../utils/time";
-  import moment from 'moment'
   export default {
     name: 'Announcement',
     components: {
