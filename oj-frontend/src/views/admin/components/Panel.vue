@@ -8,10 +8,17 @@
         <template v-else>
           {{title}}
         </template>
+        <!--
+        <template>
+          <slot name="title">
+          {{title}}
+          </slot>
+        </template>
+        -->
       </div>
 
       <div class="header_right">
-        <slot name="header"></slot>
+        <slot name="header">header</slot>
       </div>
 
       <div class="body">
@@ -68,8 +75,9 @@
       }
       > .header_right {
         position: absolute;
-        top: 50%;
+        top: 0%;
         right: 20px;
+        z-index: 1000;
         transform: translate(0, -50%);
       }
     }

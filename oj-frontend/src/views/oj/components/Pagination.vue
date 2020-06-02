@@ -35,6 +35,7 @@
     },
     methods: {
       onChange(page) {
+          console.log(page)
           if(page < 1) {
               page = 1
           }

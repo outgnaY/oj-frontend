@@ -35,7 +35,7 @@
                     :total="total"
                     :page-size="limit"
                     @on-change="getAnnouncementList"
-                    :current="currentPage">
+                    :current.sync="curPage">
         </Pagination>
       </template>
       <template v-else>
@@ -61,7 +61,7 @@
         announcement: '',
         limit: 10,
         total: 0,
-        currentPage: 1
+        curPage: 1
       }
     },
     mounted() {
@@ -78,10 +78,10 @@
             this.btnLoading = false
             this.announcements = res.data.data
             this.total = res.data.total
-            this.currentPage = page
+            this.curPage = res.data.page
         }).catch(() => {
             this.btnLoading = false
-            this.currentPage = 1
+            this.curPage = 1
         })
       },
       goBack() {

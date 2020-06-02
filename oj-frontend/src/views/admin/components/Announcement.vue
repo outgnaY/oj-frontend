@@ -47,7 +47,7 @@
           </el-table-column>
         </el-table>
         <div class="panel-options">
-          <el-button type="primary" size="small" @click="openAnnouncementDialog(null)" icon="el-icon-plus">Create</el-button>
+          <el-button type="primary" size="small" @click="openAnnouncementDialog(null)" icon="el-icon-plus">新建</el-button>
           <el-pagination
             class="page"
             layout="prev, pager, next"
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+  console.log("announcement")
   import Simditor from "./Simditor"
   import api from "../api"
   import time from "../../../utils/time";

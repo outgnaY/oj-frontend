@@ -1,21 +1,15 @@
 <template>
   <div id="app">
-    <!--
-    <NavBar></NavBar>
-    -->
-    <div class="content-app">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
     import {mapActions, mapState} from 'vuex'
-    // import NavBar from "./components/NavBar";
     export default {
         name: 'App',
         components: {
-            // NavBar
+
         },
         mounted() {
             // this.getWebsiteConfig()
@@ -27,10 +21,6 @@
 </script>
 
 <style lang="less">
-  .content-app {
-    margin-top: 80px;
-    padding: 0 2%;
-  }
   #app {
     /*
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
