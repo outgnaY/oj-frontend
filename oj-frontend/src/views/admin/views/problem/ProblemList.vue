@@ -2,7 +2,9 @@
   <div class="view">
     <Panel title="问题列表">
       <div slot="header">
-        <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="keywords"></el-input>
+        <el-input v-model="keyword" placeholder="keywords">
+          <el-button slot="append" icon="el-icon-search" @click="doSearch"></el-button>
+        </el-input>
       </div>
       <el-table
         v-loading="loading"
@@ -39,9 +41,9 @@
             <icon-btn name="Edit" icon="edit"
                       @click.native="goEdit(scope.row.problemId)"></icon-btn>
             <icon-btn icon="download" name="Download TestCase"
-                      @click.native="downloadTestCase(scope.row.id)"></icon-btn>
+                      @click.native="downloadTestCase(scope.row.problemId)"></icon-btn>
             <icon-btn icon="trash" name="Delete Problem"
-                      @click.native="deleteProblem(scope.row.id)"></icon-btn>
+                      @click.native="deleteProblem(scope.row.problemId)"></icon-btn>
           </div>
         </el-table-column>
       </el-table>
@@ -53,7 +55,8 @@
           layout="prev, pager, next"
           @current-change="currentChange"
           :page-size="pageSize"
-          :total="total">
+          :total="total"
+          :current-page="currentPage">
         </el-pagination>
       </div>
     </Panel>
@@ -61,12 +64,12 @@
 </template>
 
 <script>
-
+  import api from "../../api"
   export default {
     name: 'ProblemList',
     data() {
       return {
-          pageSize: 10,
+          pageSize: 2,
           total: 0,
           problemList: [],
           keyword: '',
@@ -75,31 +78,71 @@
       }
     },
     mounted(){
-      this.getProblemList(1)
-      this.currentPage = 1
+      this.init()
     },
     methods: {
+      init() {
+        this.currentPage = 1
+        this.getProblemList(1)
+      },
       goEdit(problemId) {
-        console.log("goEdit")
+        this.$router.push({name: 'edit-problem', params: {problemId: problemId}})
       },
       goCreateProblem() {
-        console.log("goCreateProblem")
-        // this.$router.push({name: 'create-problem'})
+        this.$router.push({name: 'create-problem'})
       },
       currentChange(page) {
         this.currentPage = page
         this.getProblemList(page)
       },
-      getProblemList(page = 1) {
-        // console.log("getProblemList")
-        this.loading = true
-        this.loading = false
+      doSearch() {
+        // 重置为首页
+        this.currentPage = 1
+        this.getProblemList(this.currentPage)
       },
+      getProblemList(page = 1) {
+        this.loading = true
+        if(this.keyword) {
+          api.problem.getProblemListByKeyword(page, this.pageSize, this.keyword).then(res => {
+            this.problemList = res.data.data.data
+            this.total = res.data.data.total
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
+        }
+        else {
+          api.problem.getProblemList(page, this.pageSize).then(res => {
+              this.total = res.data.data.total
+              this.problemList = res.data.data.data
+              this.loading = false
+          }).catch(() => {
+              this.loading = false
+          })
+        }
+      },
+      /*
       getProblemListByKeyword(page = 1) {
 
       },
+      */
       deleteProblem(problemId) {
-        console.log("deleteProblem")
+        this.$confirm('确定删除该题目吗？相关的提交也会被删除', '删除题目', {
+          type: 'warning',
+          confirmButtonText: '确定',
+          cancelButtonText: '取消'
+        }).then(() => {
+          this.loading = true
+          api.problem.deleteProblem(problemId).then(res => {
+            if(res.data.code !== 0) {
+              this.$error("删除失败")
+            }
+            this.init()
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
+        })
       },
       downloadTestCase(problemId) {
         console.log("downloadTestCase")

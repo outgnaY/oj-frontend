@@ -135,8 +135,8 @@
         api.announcement.getAnnouncementList(page, this.pageSize).then(res => {
             // console.log(res)
             this.loading = false
-            this.total = parseInt(res.data.total)
-            this.announcementList = res.data.data
+            this.total = parseInt(res.data.data.total)
+            this.announcementList = res.data.data.data
         }).catch(() => {
             this.loading = false
         })
@@ -175,6 +175,9 @@
             lastUpdateTime: now
           }
           api.announcement.updateAnnouncement(data).then(res => {
+            if(res.data.code !== 0) {
+              this.$error('更新失败！')
+            }
             this.showEditAnnouncementDialog = false
             this.init()
           }).catch(() => {
@@ -191,6 +194,9 @@
             lastUpdateTime: now
           }
           api.announcement.createAnnouncement(data).then(res => {
+            if(res.data.code !== 0) {
+              this.$error('创建失败！')
+            }
             this.showEditAnnouncementDialog = false
             this.init()
           }).catch(() => {
@@ -209,7 +215,10 @@
           // then 为确定
           this.loading = true
           api.announcement.deleteAnnouncement(announcementId).then(res => {
-            this.loading = true
+            if(res.data.code !== 0) {
+              this.$error("删除失败！")
+            }
+            this.loading = false
             this.init()
           }).catch(() => {
             this.loading = false

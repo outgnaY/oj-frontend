@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home'
 import Announcement from "../components/Announcement";
 import ProblemList from "../views/problem/ProblemList";
+import Problem from "../views/problem/Problem";
 
 Vue.use(Router)
 
@@ -23,6 +24,16 @@ export default new Router({
           path: 'problems',
           name: 'problem-list',
           component: ProblemList
+        },
+        {
+          path: 'problem/create',
+          name: 'create-problem',
+          component: Problem
+        },
+        {
+          path: 'problem/edit/:problemId',
+          name: 'edit-problem',
+          component: Problem
         }
       ]
     }

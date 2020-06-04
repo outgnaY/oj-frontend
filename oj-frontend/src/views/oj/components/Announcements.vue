@@ -76,9 +76,9 @@
         api.announcements.getAnnouncementList(page, this.limit).then(res => {
             console.log(res)
             this.btnLoading = false
-            this.announcements = res.data.data
-            this.total = res.data.total
-            this.curPage = res.data.page
+            this.announcements = res.data.data.data
+            this.total = res.data.data.total
+            this.curPage = res.data.data.page
         }).catch(() => {
             this.btnLoading = false
             this.curPage = 1

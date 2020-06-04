@@ -26,6 +26,10 @@ Vue.component(Panel.name, Panel)
 Vue.component(Cancel.name, Cancel)
 Vue.component(Save.name, Save)
 Vue.component(IconBtn.name, IconBtn)
+Vue.prototype.$error = (msg) => {
+  Vue.prototype.$message({'message': msg, 'type': 'error'})
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

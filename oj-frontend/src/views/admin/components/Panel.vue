@@ -18,7 +18,7 @@
       </div>
 
       <div class="header_right">
-        <slot name="header">header</slot>
+        <slot name="header"></slot>
       </div>
 
       <div class="body">
@@ -75,7 +75,7 @@
       }
       > .header_right {
         position: absolute;
-        top: 0%;
+        top: 30px;
         right: 20px;
         z-index: 1000;
         transform: translate(0, -50%);
