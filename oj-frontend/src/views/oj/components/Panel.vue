@@ -57,6 +57,7 @@
         padding: 0 10px;
       }
     }
+
   }
   .panel-body {
     word-break: break-all;

@@ -5,8 +5,11 @@ import Announcement from "../components/Announcement";
 import ProblemList from "../views/problem/ProblemList";
 import Problem from "../views/problem/Problem";
 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 Vue.use(Router)
-
 export default new Router({
   mode: 'history',
   base: '/admin/',

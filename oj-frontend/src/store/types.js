@@ -10,5 +10,7 @@ function keyMapping(obj) {
 }
 
 export default keyMapping({
+  'CHANGE_USER':null,
+  'CHANGE_MODAL_STATUS':null,
   'UPDATE_WEBSITE_CONF': null
 })

@@ -1,3 +1,15 @@
 export const STORAGE_KEY = {
-  LANGUAGES: 'languages'
+  LANGUAGES: 'languages',
+  AUTHED: 'authed'
+}
+export const USER_TYPE = {
+  NORMAL: 'NORMAL',
+  ADMIN: 'ADMIN'
+}
+export const ERROR_CODE = {
+  DEFAULT_ERROR_CODE: -1,
+  ERROR_CODE_AUTH: -2,
+  ERROR_CODE_TESTCASE_UPLOAD: -3,
+  ERROR_CODE_ANNOUNCEMENT: -4,
+  ERROR_CODE_PROBLEM: -5
 }

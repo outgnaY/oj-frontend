@@ -74,7 +74,7 @@
       getAnnouncementList(page = 1) {
         this.btnLoading = true
         api.announcements.getAnnouncementList(page, this.limit).then(res => {
-            console.log(res)
+            // console.log(res)
             this.btnLoading = false
             this.announcements = res.data.data.data
             this.total = res.data.data.total

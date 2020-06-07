@@ -29,7 +29,9 @@ Vue.component(IconBtn.name, IconBtn)
 Vue.prototype.$error = (msg) => {
   Vue.prototype.$message({'message': msg, 'type': 'error'})
 }
-
+Vue.prototype.$success = (msg) => {
+  Vue.prototype.$message({'message': msg})
+}
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

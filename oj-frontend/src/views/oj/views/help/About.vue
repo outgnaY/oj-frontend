@@ -32,19 +32,19 @@
 <script>
   import utils from '../../../../utils/utils'
   export default {
-      data() {
-          return {
-              languages: []
-          }
-      },
-      beforeRouteEnter(to, from, next) {
-          utils.getLanguages().then(languages => {
-            console.log(languages)
-              next(vm => {
-                  vm.languages = languages
-              })
-          })
+    data() {
+      return {
+        languages: []
       }
+    },
+    beforeRouteEnter(to, from, next) {
+      utils.getLanguages().then(languages => {
+        // console.log(languages)
+        next(vm => {
+          vm.languages = languages
+        })
+      })
+    }
   }
 </script>
 <style scoped lang="less">

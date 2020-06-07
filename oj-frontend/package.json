@@ -14,14 +14,17 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "iview": "^2.13.0",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.1.3",
+    "echarts": "^4.8.0",
     "element-ui": "latest",
+    "iview": "^2.13.0",
     "katex": "latest",
+    "moment": "latest",
     "tar-simditor": "latest",
-    "moment": "latest"
+    "vue": "^2.5.2",
+    "vue-clipboard2": "^0.3.1",
+    "vue-echarts": "^5.0.0-beta.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.1.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
